@@ -3,866 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Endoscopy Billing Codes</title>
+    <title>Billing Codes Lookup</title>
     <style>
         :root {
-  /* Primitive Color Tokens */
-  --color-white: rgba(255, 255, 255, 1);
-  --color-black: rgba(0, 0, 0, 1);
-  --color-cream-50: rgba(252, 252, 249, 1);
-  --color-cream-100: rgba(255, 255, 253, 1);
-  --color-gray-200: rgba(245, 245, 245, 1);
-  --color-gray-300: rgba(167, 169, 169, 1);
-  --color-gray-400: rgba(119, 124, 124, 1);
-  --color-slate-500: rgba(98, 108, 113, 1);
-  --color-brown-600: rgba(94, 82, 64, 1);
-  --color-charcoal-700: rgba(31, 33, 33, 1);
-  --color-charcoal-800: rgba(38, 40, 40, 1);
-  --color-slate-900: rgba(19, 52, 59, 1);
-  --color-teal-300: rgba(50, 184, 198, 1);
-  --color-teal-400: rgba(45, 166, 178, 1);
-  --color-teal-500: rgba(33, 128, 141, 1);
-  --color-teal-600: rgba(29, 116, 128, 1);
-  --color-teal-700: rgba(26, 104, 115, 1);
-  --color-teal-800: rgba(41, 150, 161, 1);
-  --color-red-400: rgba(255, 84, 89, 1);
-  --color-red-500: rgba(192, 21, 47, 1);
-  --color-orange-400: rgba(230, 129, 97, 1);
-  --color-orange-500: rgba(168, 75, 47, 1);
-
-  /* RGB versions for opacity control */
-  --color-brown-600-rgb: 94, 82, 64;
-  --color-teal-500-rgb: 33, 128, 141;
-  --color-slate-900-rgb: 19, 52, 59;
-  --color-slate-500-rgb: 98, 108, 113;
-  --color-red-500-rgb: 192, 21, 47;
-  --color-red-400-rgb: 255, 84, 89;
-  --color-orange-500-rgb: 168, 75, 47;
-  --color-orange-400-rgb: 230, 129, 97;
-
-  /* Background color tokens (Light Mode) */
-  --color-bg-1: rgba(59, 130, 246, 0.08);
-  --color-bg-2: rgba(245, 158, 11, 0.08);
-  --color-bg-3: rgba(34, 197, 94, 0.08);
-  --color-bg-4: rgba(239, 68, 68, 0.08);
-  --color-bg-5: rgba(147, 51, 234, 0.08);
-  --color-bg-6: rgba(249, 115, 22, 0.08);
-  --color-bg-7: rgba(236, 72, 153, 0.08);
-  --color-bg-8: rgba(6, 182, 212, 0.08);
-
-  /* Semantic Color Tokens (Light Mode) */
-  --color-background: var(--color-cream-50);
-  --color-surface: var(--color-cream-100);
-  --color-text: var(--color-slate-900);
-  --color-text-secondary: var(--color-slate-500);
-  --color-primary: var(--color-teal-500);
-  --color-primary-hover: var(--color-teal-600);
-  --color-primary-active: var(--color-teal-700);
-  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
-  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
-  --color-btn-primary-text: var(--color-cream-50);
-  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
-  --color-error: var(--color-red-500);
-  --color-success: var(--color-teal-500);
-  --color-warning: var(--color-orange-500);
-  --color-info: var(--color-slate-500);
-  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
-  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
-
-  /* Common style patterns */
-  --focus-ring: 0 0 0 3px var(--color-focus-ring);
-  --focus-outline: 2px solid var(--color-primary);
-  --status-bg-opacity: 0.15;
-  --status-border-opacity: 0.25;
-
-  /* RGB versions for opacity control */
-  --color-success-rgb: 33, 128, 141;
-  --color-error-rgb: 192, 21, 47;
-  --color-warning-rgb: 168, 75, 47;
-  --color-info-rgb: 98, 108, 113;
-
-  /* Typography */
-  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
-    Monaco, Consolas, monospace;
-  --font-size-xs: 11px;
-  --font-size-sm: 12px;
-  --font-size-base: 14px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-2xl: 20px;
-  --font-size-3xl: 24px;
-  --font-size-4xl: 30px;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 550;
-  --font-weight-bold: 600;
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --letter-spacing-tight: -0.01em;
-
-  /* Spacing */
-  --space-0: 0;
-  --space-1: 1px;
-  --space-2: 2px;
-  --space-4: 4px;
-  --space-6: 6px;
-  --space-8: 8px;
-  --space-10: 10px;
-  --space-12: 12px;
-  --space-16: 16px;
-  --space-20: 20px;
-  --space-24: 24px;
-  --space-32: 32px;
-
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-base: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
-    0 2px 4px -1px rgba(0, 0, 0, 0.02);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
-    0 4px 6px -2px rgba(0, 0, 0, 0.02);
-  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
-
-  /* Animation */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* Layout */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1280px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-gray-400-rgb: 119, 124, 124;
-    --color-teal-300-rgb: 50, 184, 198;
-    --color-gray-300-rgb: 167, 169, 169;
-    --color-gray-200-rgb: 245, 245, 245;
-
-    --color-bg-1: rgba(29, 78, 216, 0.15);
-    --color-bg-2: rgba(180, 83, 9, 0.15);
-    --color-bg-3: rgba(21, 128, 61, 0.15);
-    --color-bg-4: rgba(185, 28, 28, 0.15);
-    --color-bg-5: rgba(107, 33, 168, 0.15);
-    --color-bg-6: rgba(194, 65, 12, 0.15);
-    --color-bg-7: rgba(190, 24, 93, 0.15);
-    --color-bg-8: rgba(8, 145, 178, 0.15);
-
-    --color-background: var(--color-charcoal-700);
-    --color-surface: var(--color-charcoal-800);
-    --color-text: var(--color-gray-200);
-    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
-    --color-primary: var(--color-teal-300);
-    --color-primary-hover: var(--color-teal-400);
-    --color-primary-active: var(--color-teal-800);
-    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
-    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
-    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
-    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
-    --color-error: var(--color-red-400);
-    --color-success: var(--color-teal-300);
-    --color-warning: var(--color-orange-400);
-    --color-info: var(--color-gray-300);
-    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
-    --color-btn-primary-text: var(--color-slate-900);
-    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
-    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
-    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
-
-    --color-success-rgb: var(--color-teal-300-rgb);
-    --color-error-rgb: var(--color-red-400-rgb);
-    --color-warning-rgb: var(--color-orange-400-rgb);
-    --color-info-rgb: var(--color-gray-300-rgb);
-  }
-}
-
-@font-face {
-  font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
-    format('woff2');
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font-family-base);
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: var(--line-height-normal);
-  padding: var(--space-24);
-  -webkit-font-smoothing: antialiased;
-}
-
-.container {
-  max-width: var(--container-xl);
-  margin: 0 auto;
-}
-
-header {
-  margin-bottom: var(--space-32);
-}
-
-h1 {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
-  margin-bottom: var(--space-8);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.subtitle {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-24);
-}
-
-.search-container {
-  margin-bottom: var(--space-16);
-}
-
-.filter-container {
-  margin-bottom: var(--space-24);
-  display: flex;
-  align-items: center;
-  gap: var(--space-12);
-}
-
-.filter-label {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-  white-space: nowrap;
-}
-
-.filter-select {
-  flex: 1;
-  max-width: 300px;
-  padding: var(--space-10) var(--space-12);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family-base);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-base);
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  cursor: pointer;
-  transition: border-color var(--duration-fast) var(--ease-standard),
-    box-shadow var(--duration-fast) var(--ease-standard);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--space-12) center;
-  background-size: 16px;
-  padding-right: var(--space-32);
-}
-
-@media (prefers-color-scheme: dark) {
-  .filter-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  }
-}
-
-.filter-select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: var(--focus-ring);
-}
-
-.search-box {
-  width: 100%;
-  padding: var(--space-12) var(--space-16);
-  font-size: var(--font-size-base);
-  font-family: var(--font-family-base);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-base);
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  transition: border-color var(--duration-fast) var(--ease-standard),
-    box-shadow var(--duration-fast) var(--ease-standard);
-}
-
-.search-box:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: var(--focus-ring);
-}
-
-.search-box::placeholder {
-  color: var(--color-text-secondary);
-}
-
-.results-count {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-16);
-  font-weight: var(--font-weight-medium);
-}
-
-.table-container {
-  background-color: var(--color-surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-card-border);
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.table-wrapper {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead {
-  background-color: var(--color-bg-1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-th {
-  text-align: left;
-  padding: var(--space-16);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  transition: background-color var(--duration-fast) var(--ease-standard);
-}
-
-th:hover {
-  background-color: var(--color-bg-2);
-}
-
-th.sortable::after {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: var(--space-8);
-  vertical-align: middle;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--color-text-secondary);
-  opacity: 0.3;
-  transition: opacity var(--duration-fast) var(--ease-standard);
-}
-
-th.sortable:hover::after {
-  opacity: 0.6;
-}
-
-th.sort-asc::after {
-  border-top: 4px solid var(--color-primary);
-  border-bottom: none;
-  opacity: 1;
-}
-
-th.sort-desc::after {
-  border-top: none;
-  border-bottom: 4px solid var(--color-primary);
-  opacity: 1;
-}
-
-tbody tr {
-  border-bottom: 1px solid var(--color-card-border-inner);
-  transition: background-color var(--duration-fast) var(--ease-standard);
-}
-
-tbody tr:last-child {
-  border-bottom: none;
-}
-
-tbody tr:nth-child(even) {
-  background-color: var(--color-bg-1);
-}
-
-tbody tr:hover {
-  background-color: var(--color-bg-3);
-}
-
-td {
-  padding: var(--space-16);
-  font-size: var(--font-size-base);
-  color: var(--color-text);
-}
-
-td.category {
-  font-weight: var(--font-weight-medium);
-  white-space: nowrap;
-  color: var(--color-text-secondary);
-}
-
-td.procedure {
-  width: 40%;
-}
-
-td.code-cell {
-  text-align: center;
-  white-space: nowrap;
-}
-
-td.fee {
-  text-align: center;
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-}
-
-td.notes {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  max-width: 300px;
-  word-wrap: break-word;
-  white-space: normal;
-}
-
-.empty-code {
-  color: var(--color-text-secondary);
-  opacity: 0.4;
-  font-size: var(--font-size-base);
-}
-
-.code-button {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-6) var(--space-12);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-family-mono);
-  color: var(--color-btn-primary-text);
-  border: none;
-  border-radius: var(--radius-base);
-  cursor: pointer;
-  transition: all var(--duration-normal) var(--ease-standard);
-  min-width: 70px;
-  justify-content: center;
-  box-shadow: var(--shadow-inset-sm);
-}
-
-.code-button--primary {
-  background-color: var(--color-primary);
-}
-
-.code-button--primary:hover {
-  background-color: var(--color-primary-hover);
-}
-
-.code-button--primary:active {
-  background-color: var(--color-primary-active);
-}
-
-.code-button--secondary {
-  background-color: var(--color-warning);
-}
-
-.code-button--secondary:hover {
-  background-color: rgba(var(--color-warning-rgb), 0.85);
-}
-
-.code-button--secondary:active {
-  background-color: rgba(var(--color-warning-rgb), 0.75);
-}
-
-.code-button--tertiary {
-  background-color: var(--color-info);
-}
-
-.code-button--tertiary:hover {
-  background-color: rgba(var(--color-info-rgb), 0.85);
-}
-
-.code-button--tertiary:active {
-  background-color: rgba(var(--color-info-rgb), 0.75);
-}
-
-.code-button:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.code-button:active {
-  transform: translateY(0);
-}
-
-.code-button:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.code-button.copied {
-  background-color: var(--color-success) !important;
-}
-
-.code-button svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-}
-
-.no-results {
-  padding: var(--space-32);
-  text-align: center;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-base);
-}
-
-@media (max-width: 768px) {
-  body {
-    padding: var(--space-16);
-  }
-
-  h1 {
-    font-size: var(--font-size-2xl);
-  }
-
-  .filter-container {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-8);
-  }
-
-  .filter-select {
-    max-width: 100%;
-  }
-
-  th, td {
-    padding: var(--space-12);
-  }
-
-  th {
-    font-size: var(--font-size-xs);
-  }
-
-  td {
-    font-size: var(--font-size-sm);
-  }
-
-  .code-button {
-    padding: var(--space-6) var(--space-12);
-    font-size: var(--font-size-sm);
-    min-width: 70px;
-  }
-
-  td.procedure {
-    width: 45%;
-  }
-
-  .code-button {
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--font-size-xs);
-    min-width: 60px;
-    gap: var(--space-4);
-  }
-
-  td.fee {
-    font-size: var(--font-size-xs);
-  }
-}
+            --color-background: rgba(252, 252, 249, 1);
+            --color-surface: rgba(255, 255, 253, 1);
+            --color-text: rgba(19, 52, 59, 1);
+            --color-text-secondary: rgba(98, 108, 113, 1);
+            --color-primary: rgba(33, 128, 141, 1);
+            --color-primary-hover: rgba(29, 116, 128, 1);
+            --color-border: rgba(94, 82, 64, 0.2);
+            --color-card-border: rgba(94, 82, 64, 0.12);
+            --color-secondary: rgba(94, 82, 64, 0.12);
+            --color-secondary-hover: rgba(94, 82, 64, 0.2);
+            --color-success: rgba(33, 128, 141, 1);
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: rgba(31, 33, 33, 1);
+                --color-surface: rgba(38, 40, 40, 1);
+                --color-text: rgba(245, 245, 245, 1);
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-primary: rgba(50, 184, 198, 1);
+                --color-primary-hover: rgba(45, 166, 178, 1);
+                --color-border: rgba(119, 124, 124, 0.3);
+                --color-card-border: rgba(119, 124, 124, 0.2);
+                --color-secondary: rgba(119, 124, 124, 0.15);
+                --color-secondary-hover: rgba(119, 124, 124, 0.25);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            padding: var(--space-16);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: var(--space-20);
+            color: var(--color-text);
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+            margin-bottom: var(--space-20);
+        }
+
+        @media (min-width: 640px) {
+            .controls {
+                flex-direction: row;
+            }
+        }
+
+        .control-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        input, select {
+            width: 100%;
+            padding: var(--space-8) var(--space-12);
+            font-size: 14px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            font-family: var(--font-family-base);
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            select {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            }
+        }
+
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+        }
+
+        .procedure-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-16);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .procedure-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .procedure-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--space-12);
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+
+        .procedure-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--color-text);
+        }
+
+        .category-badge {
+            font-size: 11px;
+            padding: 4px 8px;
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+            color: var(--color-text);
+        }
+
+        .codes-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-bottom: var(--space-12);
+        }
+
+        .code-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background-color: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-base);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            user-select: none;
+        }
+
+        .code-chip:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .code-chip:active {
+            transform: scale(0.98);
+        }
+
+        .code-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .procedure-details {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .detail-row {
+            display: flex;
+            gap: var(--space-8);
+            margin-bottom: 4px;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .notes {
+            margin-top: var(--space-8);
+            padding: var(--space-8);
+            background-color: var(--color-secondary);
+            border-radius: var(--radius-base);
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: var(--space-20);
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--color-success);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-base);
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Endoscopy Billing Codes</h1>
-            <p class="subtitle">Search and copy billing codes for endoscopy procedures</p>
-        </header>
-
-        <div class="search-container">
-            <input 
-                type="text" 
-                id="searchInput" 
-                class="search-box" 
-                placeholder="Search by procedure or code..."
-                aria-label="Search billing codes"
-            >
-        </div>
-
-        <div class="filter-container">
-            <label for="categoryFilter" class="filter-label">Filter by Category:</label>
-            <select id="categoryFilter" class="filter-select" aria-label="Filter by category">
-                <option value="">All Categories</option>
-                <option value="Upper Endoscopy">Upper Endoscopy</option>
-                <option value="Lower Endoscopy">Lower Endoscopy</option>
-                <option value="Modifiers">Modifiers</option>
-
-                <option value="Prairie Shortcuts">Prairie Shortcuts</option>
-            </select>
-        </div>
-
-        <div id="resultsCount" class="results-count"></div>
-
-        <div class="table-container">
-            <div class="table-wrapper">
-                <table id="billingTable">
-                    <thead>
-                        <tr>
-                            <th class="sortable" data-column="category">Category</th>
-                            <th class="sortable" data-column="procedure">Procedure</th>
-                            <th class="sortable" data-column="code">Code</th>
-                            <th class="sortable" data-column="fee">Fee</th>
-                            <th class="sortable" data-column="notes">Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <!-- Table rows will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
-                <div id="noResults" class="no-results" style="display: none;">
-                    No billing codes found matching your search.
-                </div>
+        <h1>Billing Codes Lookup</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="search">Search procedures</label>
+                <input type="text" id="search" placeholder="Search by procedure or code...">
+            </div>
+            <div class="control-group">
+                <label for="category">Filter by category</label>
+                <select id="category">
+                    <option value="all">All Categories</option>
+                </select>
             </div>
         </div>
+
+        <div class="results-container" id="results"></div>
+        <div class="toast" id="toast"></div>
     </div>
 
     <script>
-        // Billing codes data
-        const billingCodes = [
-            { category: "Upper Endoscopy", procedure: "EGD", code: "3123", fee: "135.97", notes: "" },
-            { category: "Upper Endoscopy", procedure: "EGD + polypectomy", code: "3122", fee: "216.46", notes: "" },
-            { category: "Upper Endoscopy", procedure: "EGD with foreign body removal", code: "3057", fee: "196.19", notes: "" },
-            { category: "Upper Endoscopy", procedure: "Push enteroscopy", code: "3190", fee: "241.69", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Colonoscopy", code: "3185", fee: "205.96", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Colonoscopy + biopsy", code: "3186", fee: "216.16", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Colonoscopy with polypectomy snare", code: "3187", fee: "314.39", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Colonoscopy with polypectomy using cauteruy", code: "3189", fee: "314.39", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Extra polyp", code: "3188", fee: "76.07", notes: "Can add to 3187 or 3189. Max 4" },
-            { category: "Lower Endoscopy", procedure: "TI intubation", code: "3196", fee: "22.28", notes: "Must be symptomatic (abd pain, diarrhea, bleeding etc)" },
-            { category: "Lower Endoscopy", procedure: "Flex sig - 25-65cm", code: "3320", fee: "87.29", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Flex sig with removal of single polyp", code: "3323", fee: "115.48", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Flex sig - additional polyp", code: "3324", fee: "45.44", notes: "Up to 4 extra polyps" },
-            { category: "Lower Endoscopy", procedure: "Flex sig < 25cm", code: "3311", fee: "57.43", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Flex sig < 25cm with biopsy", code: "3313", fee: "66.22", notes: "" },
-            { category: "Upper Endoscopy", procedure: "10+ biopsies", code: "3013", fee: "39.41", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Flex sig < 25cm with removal of single lesion", code: "3315", fee: "92.37", notes: "" },
-            { category: "Lower Endoscopy", procedure: "Flex sig < 25cm with removal of multiple lesions", code: "3317", fee: "114.69", notes: "" },
-            { category: "Endo Modifiers", procedure: "Balloon dilation", code: "3000", fee: "106.66", notes: "" },
-            { category: "Endo Modifiers", procedure: "Botox Injection", code: "3002", fee: "53.53", notes: "" },
-            { category: "Endo Modifiers", procedure: "Hemostasis", code: "3004", fee: "123.05", notes: "" },
-            { category: "Endo Modifiers", procedure: "Hemodynamic instability", code: "3006", fee: "56.28", notes: "one or more of:  HR>100, BP< 80, Hb<80, ongoing bleeding" },
-            { category: "Endo Modifiers", procedure: "Placement of postpyloric feeding tube", code: "3008", fee: "86.48", notes: "" },
-            { category: "Lower Endoscopy", procedure: "10 or more biopsies", code: "3012", fee: "64.82", notes: "For upper gi, use 3013" },
-            { category: "Prairie Shortcuts", procedure: "Consult + EGD + 10+ biopsies", code: "0005, 8550, 8380, 3123, 3013, 2651", fee: "", notes: "codes include tray fee but billing subtracts this" },
-            { category: "Prairie Shortcuts", procedure: "Consult + Colon", code: "0005, 8550, 8380, 3185, 2651 ", fee: "", notes: "codes include tray fee but billing subtracts this" },
-            { category: "Prairie Shortcuts", procedure: "Consult, Colon, 1 polyp", code: "0005, 8550, 8380, 3187, 2651", fee: "", notes: "codes include tray fee but billing subtracts this" },
-            { category: "Prairie Shortcuts", procedure: "Consult + colon + biopsy", code: "0005, 8550, 8380, 3186, 2651 ", fee: "", notes: "" },
-            { category: "Prairie Shortcuts", procedure: "Consult + Double + 10 EGD biopsies", code: "0005, 0005, 8550, 8380, 3123, 3013, 3185, 2651", fee: "", notes: "includes sedation, tray feex2, community supplement" },
-            { category: "Prairie Shortcuts", procedure: "Extra colon polyp", code: "3188", fee: "76.07", notes: "Max 4" },
-            { category: "Prairie Shortcuts", procedure: "TI intubation", code: "3196", fee: "22.28", notes: "" },
-            { category: "Prairie Shortcuts", procedure: "10+ biopsies in colon", code: "3012", fee: "64.82", notes: "Only works for 3186 or 3187" },
-            { category: "Prairie Shortcuts", procedure: "Endoscopy Tray Fee", code: "5", fee: "", notes: "Can bill x 2 if doing EGD+colon" },
-            { category: "Prairie Shortcuts", procedure: "Procedural sedation", code: "2651", fee: "", notes: "Can only bill once per case" }
-        ];;
+        const billingData = [{"Category": "Upper Endoscopy", "Procedure": "EGD", "Code": "3123", "Fee": "135.97", "Notes": ""}, {"Category": "Upper Endoscopy", "Procedure": "EGD + polypectomy", "Code": "3122", "Fee": "216.46", "Notes": ""}, {"Category": "Upper Endoscopy", "Procedure": "EGD with foreign body removal", "Code": "3057", "Fee": "196.19", "Notes": ""}, {"Category": "Upper Endoscopy", "Procedure": "Push enteroscopy", "Code": "3190", "Fee": "241.66", "Notes": ""}, {"Category": "Upper Endoscopy", "Procedure": "10+ biopsies", "Code": "3013", "Fee": "37.50", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Colonoscopy", "Code": "3185", "Fee": "205.96", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Colonoscopy + biopsy", "Code": "3186", "Fee": "216.16", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Colonoscopy with polypectomy snare", "Code": "3187", "Fee": "314.39", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Colonoscopy with polypectomy using cauteruy", "Code": "3189", "Fee": "314.39", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Extra polyp", "Code": "3188", "Fee": "76.07", "Notes": "Can add to 3187 or 3189. Max 4"}, {"Category": "Lower Endoscopy", "Procedure": "TI intubation", "Code": "3196", "Fee": "22.28", "Notes": "Must be symptomatic (abd pain, diarrhea, bleeding etc)"}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig - 25-65cm", "Code": "3320", "Fee": "87.29", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig with removal of single polyp", "Code": "3323", "Fee": "115.48", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig - additional polyp", "Code": "3324", "Fee": "45.44", "Notes": "Up to 4 extra polyps"}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig < 25cm", "Code": "3311", "Fee": "57.43", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig < 25cm with biopsy", "Code": "3313", "Fee": "63.65", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig < 25cm with removal of single lesion", "Code": "3315", "Fee": "87.90", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "Flex sig < 25cm with removal of multiple lesions", "Code": "3317", "Fee": "109.15", "Notes": ""}, {"Category": "Lower Endoscopy", "Procedure": "10 or more biopsies", "Code": "3012", "Fee": "64.82", "Notes": "For upper gi, use 3013"}, {"Category": "Modifiers", "Procedure": "Balloon dilation", "Code": "3000", "Fee": "101.50", "Notes": ""}, {"Category": "Modifiers", "Procedure": "Botox Injection", "Code": "3002", "Fee": "51.45", "Notes": ""}, {"Category": "Modifiers", "Procedure": "Hemostasis", "Code": "3004", "Fee": "117.10", "Notes": ""}, {"Category": "Modifiers", "Procedure": "Hemodynamic instability", "Code": "3006", "Fee": "54.10", "Notes": "one or more of: HR>100, BP< 80, Hb<80, ongoing bleeding"}, {"Category": "Modifiers", "Procedure": "Placement of postpyloric feeding tube", "Code": "3008", "Fee": "82.30", "Notes": ""}, {"Category": "Prairie Shortcuts", "Procedure": "Consult + EGD + 10+ biopsies", "Code": "0005, 8550, 8380, 3123, 3013, 2651", "Fee": "362.71", "Notes": "codes include tray fee but billing subtracts this"}, {"Category": "Prairie Shortcuts", "Procedure": "Consult + Colon", "Code": "0005, 8550, 8380, 3185, 2651", "Fee": "395.20", "Notes": "codes include tray fee but billing subtracts this"}, {"Category": "Prairie Shortcuts", "Procedure": "Consult, Colon, 1 polyp", "Code": "0005, 8550, 8380, 3187, 2651", "Fee": "503.63", "Notes": "codes include tray fee but billing subtracts this"}, {"Category": "Prairie Shortcuts", "Procedure": "Consult + colon + biopsy", "Code": "3186", "Fee": "405.40", "Notes": ""}, {"Category": "Prairie Shortcuts", "Procedure": "Consult + Double + 10 EGD biopsies", "Code": "0005, 0005, 8550, 8380, 3123, 3013, 3175, 2651", "Fee": "568.67", "Notes": "includes sedation, tray feex2, community supplement"}, {"Category": "Prairie Shortcuts", "Procedure": "Extra colon polyp", "Code": "3188", "Fee": "73.12", "Notes": "Max 4"}, {"Category": "Prairie Shortcuts", "Procedure": "TI intubation", "Code": "3196", "Fee": "21.41", "Notes": ""}, {"Category": "Prairie Shortcuts", "Procedure": "10+ biopsies in colon", "Code": "3012", "Fee": "62.30", "Notes": "Only works for 3186 or 3187"}, {"Category": "Prairie Shortcuts", "Procedure": "Endoscopy Tray Fee", "Code": "5", "Fee": "197.68", "Notes": "Can bill x 2 if doing EGD+colon"}, {"Category": "Prairie Shortcuts", "Procedure": "Procedural sedation", "Code": "2651", "Fee": "5202.00", "Notes": "Can only bill once per case"}];;
 
-        // State management
-        let filteredCodes = [...billingCodes];
-        let currentSort = { column: null, direction: 'asc' };
-        let selectedCategory = '';
+        const searchInput = document.getElementById('search');
+        const categorySelect = document.getElementById('category');
+        const resultsContainer = document.getElementById('results');
+        const toast = document.getElementById('toast');
 
-        // DOM elements
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const tableBody = document.getElementById('tableBody');
-        const resultsCount = document.getElementById('resultsCount');
-        const noResults = document.getElementById('noResults');
-        const sortableHeaders = document.querySelectorAll('th.sortable');
+        let filteredData = billingData;
 
-        // Initialize the app
-        function init() {
-            renderTable();
-            updateResultsCount();
-            attachEventListeners();
-        }
+        // Populate category dropdown
+        const categories = [...new Set(billingData.map(item => item.Category).filter(cat => cat && cat !== 'n/a'))].sort();
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
+        });
 
-        // Attach event listeners
-        function attachEventListeners() {
-            searchInput.addEventListener('input', handleSearch);
-            categoryFilter.addEventListener('change', handleCategoryFilter);
-            sortableHeaders.forEach(header => {
-                header.addEventListener('click', () => handleSort(header.dataset.column));
-            });
-        }
+        function filterData() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categorySelect.value;
 
-        // Handle category filter
-        function handleCategoryFilter(e) {
-            selectedCategory = e.target.value;
-            applyFilters();
-        }
+            filteredData = billingData.filter(item => {
+                const matchesSearch = !searchTerm || 
+                    item.Procedure.toLowerCase().includes(searchTerm) ||
+                    String(item.Code).toLowerCase().includes(searchTerm) ||
+                    (item.Notes && item.Notes !== 'n/a' && item.Notes.toLowerCase().includes(searchTerm));
+                
+                const matchesCategory = selectedCategory === 'all' || item.Category === selectedCategory;
 
-        // Handle search
-        function handleSearch(e) {
-            applyFilters();
-        }
-
-        // Apply both filters (category and search)
-        function applyFilters() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            
-            // Start with all codes
-            let result = [...billingCodes];
-            
-            // Apply category filter first
-            if (selectedCategory !== '') {
-                result = result.filter(item => item.category === selectedCategory);
-            }
-            
-            // Then apply search filter (search across procedure and code fields, not category)
-            if (searchTerm !== '') {
-                result = result.filter(item => 
-                    item.procedure.toLowerCase().includes(searchTerm) ||
-                    item.code.includes(searchTerm) ||
-                    item.notes.toLowerCase().includes(searchTerm)
-                );
-            }
-            
-            filteredCodes = result;
-            renderTable();
-            updateResultsCount();
-        }
-
-        // Handle sorting
-        function handleSort(column) {
-            // Toggle sort direction
-            if (currentSort.column === column) {
-                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-            } else {
-                currentSort.column = column;
-                currentSort.direction = 'asc';
-            }
-
-            // Sort the filtered codes
-            filteredCodes.sort((a, b) => {
-                let aVal = a[column];
-                let bVal = b[column];
-
-                // For numeric columns, convert to numbers for proper sorting
-                if (column === 'code') {
-                    aVal = aVal ? parseInt(aVal) : 0;
-                    bVal = bVal ? parseInt(bVal) : 0;
-                } else if (column === 'fee') {
-                    aVal = aVal ? parseFloat(aVal) : 0;
-                    bVal = bVal ? parseFloat(bVal) : 0;
-                } else {
-                    aVal = aVal.toLowerCase();
-                    bVal = bVal.toLowerCase();
-                }
-
-                if (aVal < bVal) return currentSort.direction === 'asc' ? -1 : 1;
-                if (aVal > bVal) return currentSort.direction === 'asc' ? 1 : -1;
-                return 0;
+                return matchesSearch && matchesCategory;
             });
 
-            updateSortIndicators();
-            renderTable();
+            renderResults();
         }
 
-        // Update sort indicators in headers
-        function updateSortIndicators() {
-            sortableHeaders.forEach(header => {
-                header.classList.remove('sort-asc', 'sort-desc');
-                if (header.dataset.column === currentSort.column) {
-                    header.classList.add(`sort-${currentSort.direction}`);
-                }
-            });
-        }
-
-        // Helper to create a code button
-        function createCodeButton(code, type = 'primary') {
-            if (!code || code.trim() === '') {
-                return '<span class="empty-code">—</span>';
-            }
-            return `
-                <button class="code-button code-button--${type}" onclick="copyCode('${code}', this)" aria-label="Copy code ${code}">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    ${code}
-                </button>
-            `;
-        }
-
-        // Render the table
-        function renderTable() {
-            if (filteredCodes.length === 0) {
-                tableBody.innerHTML = '';
-                noResults.style.display = 'block';
+        function renderResults() {
+            if (filteredData.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No procedures found matching your search.</div>';
                 return;
             }
 
-            noResults.style.display = 'none';
-            
-            tableBody.innerHTML = filteredCodes.map(item => `
-                <tr>
-                    <td class="category">${escapeHtml(item.category)}</td>
-                    <td class="procedure">${escapeHtml(item.procedure)}</td>
-                    <td class="code-cell">${createCodeButton(item.code, 'primary')}</td>
-                    <td class="fee">${item.fee ? '$' + escapeHtml(item.fee) : '<span class="empty-code">—</span>'}</td>
-                    <td class="notes">${escapeHtml(item.notes) || '<span class="empty-code">—</span>'}</td>
-                </tr>
-            `).join('');
+            resultsContainer.innerHTML = filteredData.map(item => {
+                
+                const hasNotes = item.Notes !== 'n/a' && item.Notes !== null;
+
+                return `
+                    <div class="procedure-card">
+                        <div class="procedure-header">
+                            <div class="procedure-title">${item.Procedure}</div>
+                            ${item.Category && item.Category !== 'n/a' ? `<div class="category-badge">${item.Category}</div>` : ''}
+                        </div>
+                        
+                        <div class="codes-section">
+                            <div class="code-chip" onclick="copyCode('${item.Code}', 'Code')">
+                                <span class="code-label">Code:</span>
+                                <span>${item.Code}</span>
+                            </div>
+                            
+                            ` : ''}
+                        </div>
+
+                        <div class="procedure-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Fee:</span>
+                                <span>${item.Fee}</span>
+                            </div>
+                        </div>
+
+                        ${hasNotes ? `<div class="notes">${item.Notes}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
         }
 
-        // Update results count
-        function updateResultsCount() {
-            const count = filteredCodes.length;
-            const total = billingCodes.length;
-            if (selectedCategory === '' && searchInput.value.trim() === '') {
-                resultsCount.textContent = `Showing ${count} ${count === 1 ? 'procedure' : 'procedures'}`;
-            } else {
-                resultsCount.textContent = `Showing ${count} of ${total} procedures`;
-            }
-        }
-
-        // Copy code to clipboard
-        async function copyCode(code, button) {
-            try {
-                await navigator.clipboard.writeText(code);
-                showCopySuccess(button, code);
-            } catch (err) {
-                // Fallback for older browsers or when clipboard API fails
-                fallbackCopyCode(code, button);
-            }
-        }
-
-        // Fallback copy method
-        function fallbackCopyCode(code, button) {
+        function copyCode(code, label) {
             const textArea = document.createElement('textarea');
             textArea.value = code;
             textArea.style.position = 'fixed';
@@ -872,53 +362,28 @@ td.notes {
             
             try {
                 document.execCommand('copy');
-                showCopySuccess(button, code);
+                showToast(`${label} ${code} copied to clipboard`);
             } catch (err) {
-                showCopyError(button);
+                showToast('Failed to copy code');
             }
             
             document.body.removeChild(textArea);
         }
 
-        // Show copy success feedback
-        function showCopySuccess(button, code) {
-            const originalHTML = button.innerHTML;
-            button.classList.add('copied');
-            button.innerHTML = `
-                <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Copied!
-            `;
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
             
             setTimeout(() => {
-                button.classList.remove('copied');
-                button.innerHTML = originalHTML;
-            }, 1500);
+                toast.classList.remove('show');
+            }, 2000);
         }
 
-        // Show copy error feedback
-        function showCopyError(button) {
-            const originalHTML = button.innerHTML;
-            button.innerHTML = 'Error';
-            
-            setTimeout(() => {
-                button.innerHTML = originalHTML;
-            }, 1500);
-        }
+        searchInput.addEventListener('input', filterData);
+        categorySelect.addEventListener('change', filterData);
 
-        // Escape HTML to prevent XSS
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Make copyCode globally accessible
-        window.copyCode = copyCode;
-
-        // Initialize on load
-        init();
+        // Initial render
+        renderResults();
     </script>
 </body>
 </html>
