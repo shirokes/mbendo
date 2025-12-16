@@ -279,41 +279,6 @@
     <script>
         const billingData = [
         {
-                "Category": "Upper Endoscopy",
-                "Procedure": "EGD",
-                "Code": "3123",
-                "Fee": "135.97",
-                "Notes": ""
-        },
-        {
-                "Category": "Upper Endoscopy",
-                "Procedure": "EGD + polypectomy",
-                "Code": "3122",
-                "Fee": "216.46",
-                "Notes": ""
-        },
-        {
-                "Category": "Upper Endoscopy",
-                "Procedure": "EGD with foreign body removal",
-                "Code": "3057",
-                "Fee": "196.19",
-                "Notes": ""
-        },
-        {
-                "Category": "Upper Endoscopy",
-                "Procedure": "Push enteroscopy",
-                "Code": "3190",
-                "Fee": "241.66",
-                "Notes": ""
-        },
-        {
-                "Category": "Upper Endoscopy",
-                "Procedure": "10+ biopsies",
-                "Code": "3013",
-                "Fee": "37.50",
-                "Notes": ""
-        },
-        {
                 "Category": "Lower Endoscopy",
                 "Procedure": "Colonoscopy",
                 "Code": "3185",
@@ -412,6 +377,41 @@
                 "Notes": "For upper gi, use 3013"
         },
         {
+                "Category": "Upper Endoscopy",
+                "Procedure": "EGD",
+                "Code": "3123",
+                "Fee": "135.97",
+                "Notes": ""
+        },
+        {
+                "Category": "Upper Endoscopy",
+                "Procedure": "EGD + polypectomy",
+                "Code": "3122",
+                "Fee": "216.46",
+                "Notes": ""
+        },
+        {
+                "Category": "Upper Endoscopy",
+                "Procedure": "EGD with foreign body removal",
+                "Code": "3057",
+                "Fee": "196.19",
+                "Notes": ""
+        },
+        {
+                "Category": "Upper Endoscopy",
+                "Procedure": "Push enteroscopy",
+                "Code": "3190",
+                "Fee": "241.66",
+                "Notes": ""
+        },
+        {
+                "Category": "Upper Endoscopy",
+                "Procedure": "10+ biopsies",
+                "Code": "3013",
+                "Fee": "37.50",
+                "Notes": ""
+        },
+        {
                 "Category": "Modifiers",
                 "Procedure": "Balloon dilation",
                 "Code": "3000",
@@ -450,70 +450,70 @@
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Consult + EGD + 10+ biopsies",
                 "Code": "0005, 8550, 8380, 3123, 3013, 2651",
-                "Fee": "362.71",
+                "Fee": "",
                 "Notes": "codes include tray fee but billing subtracts this"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Consult + Colon",
                 "Code": "0005, 8550, 8380, 3185, 2651",
-                "Fee": "395.20",
+                "Fee": "",
                 "Notes": "codes include tray fee but billing subtracts this"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Consult, Colon, 1 polyp",
                 "Code": "0005, 8550, 8380, 3187, 2651",
-                "Fee": "503.63",
+                "Fee": "",
                 "Notes": "codes include tray fee but billing subtracts this"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Consult + colon + biopsy",
                 "Code": "3186",
-                "Fee": "405.40",
+                "Fee": "",
                 "Notes": ""
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Consult + Double + 10 EGD biopsies",
                 "Code": "0005, 0005, 8550, 8380, 3123, 3013, 3175, 2651",
-                "Fee": "568.67",
+                "Fee": "",
                 "Notes": "includes sedation, tray feex2, community supplement"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Extra colon polyp",
                 "Code": "3188",
-                "Fee": "73.12",
+                "Fee": "",
                 "Notes": "Max 4"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "TI intubation",
                 "Code": "3196",
-                "Fee": "21.41",
+                "Fee": "",
                 "Notes": ""
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "10+ biopsies in colon",
                 "Code": "3012",
-                "Fee": "62.30",
+                "Fee": "",
                 "Notes": "Only works for 3186 or 3187"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Endoscopy Tray Fee",
                 "Code": "5",
-                "Fee": "197.68",
+                "Fee": "",
                 "Notes": "Can bill x 2 if doing EGD+colon"
         },
         {
                 "Category": "Prairie Shortcuts",
                 "Procedure": "Procedural sedation",
                 "Code": "2651",
-                "Fee": "5202.00",
+                "Fee": "",
                 "Notes": "Can only bill once per case"
         }
 ];;
@@ -526,7 +526,7 @@
         let filteredData = billingData;
 
         // Populate category dropdown
-        const categories = [...new Set(billingData.map(item => item.Category).filter(cat => cat && cat !== 'n/a'))].sort();
+        const categories = ['Lower Endoscopy', 'Upper Endoscopy', 'Modifiers', 'Prairie Shortcuts'];
         categories.forEach(category => {
             const option = document.createElement('option');
             option.value = category;
@@ -559,9 +559,7 @@
             }
 
             resultsContainer.innerHTML = filteredData.map(item => {
-                const hasBMI = item['BMI code'] !== 'n/a' && item['BMI code'] !== null;
-                const hasLap = item['Lap code'] !== 'n/a' && item['Lap code'] !== null;
-                const hasNotes = item.Notes !== 'n/a' && item.Notes !== null;
+                                                const hasNotes = item.Notes !== 'n/a' && item.Notes !== null;
 
                 return `
                     <div class="procedure-card">
@@ -575,18 +573,8 @@
                                 <span class="code-label">Code:</span>
                                 <span>${item.Code}</span>
                             </div>
-                            ${hasBMI ? `
-                                <div class="code-chip" onclick="copyCode('${item['BMI code']}', 'BMI Code')">
-                                    <span class="code-label">BMI:</span>
-                                    <span>${item['BMI code']}</span>
-                                </div>
-                            ` : ''}
-                            ${hasLap ? `
-                                <div class="code-chip" onclick="copyCode('${item['Lap code']}', 'Lap Code')">
-                                    <span class="code-label">Lap:</span>
-                                    <span>${item['Lap code']}</span>
-                                </div>
-                            ` : ''}
+                            
+                            
                         </div>
 
                         <div class="procedure-details">
